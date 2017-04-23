@@ -52,6 +52,11 @@ You can either do everything inside the vagrant box or if you want to share this
 
 [More help with provision](https://www.vagrantup.com/docs/cli/provision.html)
 
+## Things you need to know
+
+- You can access Vagrant box port :80 from your own machine using port :8080
+- npm has been prefixed to fix problem with npm global installation directory access problem. [Option 2 in these instructions](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
+
 ## Has been tested to work with at least following versions
 
 - Vagrant 1.7.4
