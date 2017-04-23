@@ -65,7 +65,7 @@ You can either do everything inside the vagrant box or if you want to share this
 ## Has been tested to work with at least following versions
 
 - Vagrant 1.7.4
-- Mac OSX Yosemite
+- Mac OSX El Capitan
 
 ## Things you need to know
 

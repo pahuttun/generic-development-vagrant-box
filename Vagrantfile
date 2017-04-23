@@ -60,7 +60,7 @@ SCRIPT
 # These commands are run as "VM_USER"
 $profile_setup_script = <<SCRIPT
 
-  ADD_TO_PATH = '~/.npm-global-packages/bin'
+  ADD_TO_PATH='~/.npm-global-packages/bin'
 
   echo "Add needed folders to path"
   [ -f ~/.profile ] || touch ~/.profile
