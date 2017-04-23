@@ -14,7 +14,7 @@ The goal is really not to include everything you might ever need, as this is you
 
 It creates virtualized development environment, which uses ubuntu. It shares folder between host and guest, creates port forwarding, installs Git, node and npm and makes sure OS is up-to-date.
 
-Based on this article: [https://medium.com/@JohnFoderaro/how-to-set-up-a-local-linux-environment-with-vagrant-163f0ba4da77]()
+Based on this article: https://medium.com/@JohnFoderaro/how-to-set-up-a-local-linux-environment-with-vagrant-163f0ba4da77
 
 ## How to setup
 
