@@ -7,11 +7,11 @@
 # Box / OS
 VAGRANT_BOX = 'ubuntu/trusty64'
 
-# Virtual machine name: <change this>
-VM_NAME = 'myvirtualmachine'
+# Virtual machine name: <change this to whatever you like>
+VM_NAME = 'vm'
 
-# Project name: <change this>
-PROJECT_NAME = 'myproject'
+# Project name: <change this to whatever you like>
+PROJECT_NAME = 'project'
 
 # VM User — 'vagrant' by default
 VM_USER = 'vagrant'
@@ -22,8 +22,8 @@ HOST_PATH = '.'
 # Where to sync to on Guest
 GUEST_PATH = '/home/' + VM_USER + '/' + PROJECT_NAME
 
-# VM Port — uncomment this to use NAT instead of DHCP
-# VM_PORT = 8080
+# VM Port — comment this to use DHCP instead of NAT
+VM_PORT = 8080
 
 # Provision script for the Vagrant box
 # These commands are run as root
@@ -78,6 +78,7 @@ Vagrant.configure(2) do |config|
 
   # Virtual machine name
   config.vm.hostname = VM_NAME
+  config.vm.define VM_NAME
 
   # VM settings
   config.vm.provider "virtualbox" do |v|
@@ -88,11 +89,11 @@ Vagrant.configure(2) do |config|
     v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
   end
 
-  # Port forwarding — uncomment this to use NAT instead of DHCP
-  # config.vm.network "forwarded_port", guest: 80, host: VM_PORT
+  # Port forwarding — comment this to use DHCP instead of NAT
+  config.vm.network "forwarded_port", guest: 80, host: VM_PORT
 
-  # DHCP — comment this out if planning on using NAT instead
-  config.vm.network "private_network", type: "dhcp"
+  # DHCP — uncomment this if planning on using DHCP instead
+  #config.vm.network "private_network", type: "dhcp"
 
   # Sync folder
   config.vm.synced_folder HOST_PATH, GUEST_PATH
