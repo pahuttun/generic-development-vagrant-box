@@ -8,18 +8,17 @@
 
 ## Purpose
 
-"Okay, today I will start learning/developing with typescript/react/angular/etc.", you said, googled for installation instructions and then installed bunch of stuff to your computer. Probably something fails, as it often does, so you install something more to fix that.
+"Okay, today I will start learning/develop with Typescript/React/Angular/etc.", you said, googled for installation instructions and then installed a bunch of stuff to your computer. Probably something fails, as it often does, so you install something more to fix that.
 
-That is okay if you are planning to use this tech for good for ages. But when you just want to test something out or compare different techs, it might be indimitating to install everything to your own computer.
+That is okay if you are planning to use this tech for good for ages. But when you just want to test something out or compare different techs, it might be intimidating to install everything to your own computer.
 
 The purpose of this project is to give you:
-- Instructions how to setup generic virtualized development environment, which is good starting point for almost any tech which runs on Ubuntu Linux
+- Instructions how to set up generic virtualized development environment, which is good starting point for almost any tech which runs on Ubuntu Linux
 - Pre-made Vagrantfile, which automatically sets your development environment...
 - And fixes the most common errors you will face when using virtual environments
+- You can have as many virtual environments you like, for example, one per tech you are trying out. Also if you manage to create horrible mess, just nuke the environment and create new one to start again
 
-The goal is not to instruct "how to install tech x", but just tell whether it has been tested out to work with this env and then link to tech's own instructions.
-
-Also the goal is not to pre-install everything, but just the basics you need.
+The goal is not to instruct "how to install tech x", but just tell whether it has been tested out to work with this environment and then link to tech's own instructions. Also, the goal is not to pre-install everything, but just the basics you need.
 
 Based on this article: https://medium.com/@JohnFoderaro/how-to-set-up-a-local-linux-environment-with-vagrant-163f0ba4da77
 
@@ -31,14 +30,6 @@ Based on this article: https://medium.com/@JohnFoderaro/how-to-set-up-a-local-li
 
 [More help with Vagrantfile](https://www.vagrantup.com/docs/vagrantfile/)
 
-## What now?
-
-Okay, now you have new shiny Vagrant environment. How to use it?
-
-1) Use it as you would use any environment. Follow your tech choice's instructions for setup and usage. Do everything inside the virtual env, except...
-
-2) Modify source code and use browser from your own computer, not inside virtual environment. Why? Because virtual environment doesn't have mega-awesome browsers and IDEs installed. The virtual environment is automatically setup to both share project folder between your computer (host) and the virtual environment (guest) and forward ports between host and guest so you can use browser on your own computer.
-
 ## How to start using your new development environment
 
 ```
@@ -47,17 +38,30 @@ vagrant ssh
 cd ~/<name-of-your-project>
 ```
 
+Notice: vagrant up takes some time when you run it the first time. It also does lots of downloading, so make sure you are on wifi.
+
 [More help with vagrant basic commands](https://www.vagrantup.com/docs/cli/)
 
 and you are ready to do your magic.
 
 ## But wait, this environment doesn't have Typescript/React/Angular/etc installed? What to do
 
-This is your work. You have now clean and empty development env with the bare basic setup. To make it work with your unique needs, just follow the your-technology-here instructions.
+This is your work. You have now clean and empty development environment with the bare basic setup. To make it work with your unique needs, just follow the your-technology-here instructions.
 
-You can either do everything inside the vagrant box or if you want to share this environment with other developers, then it is wiser to setup things in provision part of the Vagrantfile.
+You can either do everything inside the vagrant box or if you want to share this environment with other developers, then it is wiser to set up things in provision part of the Vagrantfile.
 
-[More help with provision](https://www.vagrantup.com/docs/cli/provision.html)
+[More help with provision = "what is pre-installed to development environment when I run vagrant up the first time"](https://www.vagrantup.com/docs/cli/provision.html)
+
+## Okay, what now?
+
+Okay, now you have the new shiny virtual development environment made using Vagrant. How to use it?
+
+1) Use it as you would use any environment. Follow your tech choice's instructions for setup and usage. Do everything inside the virtual environment, except...
+
+2) Modify source code and use a browser from your own computer, not inside the virtual environment. Why? Because virtual environment doesn't have mega-awesome browsers and IDEs installed. The virtual environment is automatically setup to both share project folder between your computer (host) and the virtual environment (guest) and forward ports between host and guest so you can use a browser on your own computer.
+
+[More help with synced folders = "how to sync files between your computer and development environment"](https://www.vagrantup.com/docs/synced-folders/)
+[More help with port forwarding = "how to access development environment via browser"](https://www.vagrantup.com/docs/networking/forwarded_ports.html)
 
 # Proven examples how to setup different environments
 
@@ -80,7 +84,7 @@ Notices:
 
 ## Other technologies
 
-Please try it out and let me know if you found any problems that needs fixing
+Please try it out and let me know if you found any problems that need fixing.
 
 # Known issues
 
@@ -114,6 +118,6 @@ Fixed: In a Vagrantfile, so you don't have to worry about it
 
 ### create-react-app installation or start fails with error coming from random npm packages
 
-Problem: create-react-app fails to install because ENOENT error coming from random package. If run multiple times, it might eventually install. However it won't start, as another error is thrown from one of the packages
-Solution: npm 4.5.0 seems to be buggy. Installed yarn
+Problem: create-react-app fails to install because ENOENT error coming from a random package. If run multiple times, it might eventually install. However, it won't start, as another error is thrown from one of the packages
+Solution: npm 4.5.0 seems to be buggy. Installed yarn. create-react-app automatically uses yarn if it is installed.
 Fixed: In a Vagrantfile, so you don't have to worry about it
