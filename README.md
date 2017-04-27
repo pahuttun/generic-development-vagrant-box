@@ -96,7 +96,8 @@ Host:
 - VirtualBox 5.0.10
 
 Guest:
-- Nodejs 6.10.2
+- Ubuntu 14.04.5 LTS
+- Nodejs 6.10.2 LTS
 - npm 4.5.0
 - yarn 0.23.2
 
@@ -110,14 +111,12 @@ N/A
 
 ## Fixed in a way that you don't have to worry about it
 
-### npm global package folder permissions in vagrant
+npm global package folder permissions in vagrant
+- Problem: npm global package installation fails with permission issues
+- Solution: [Option 2 in these instructions](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
+- Fixed: In a Vagrantfile, so you don't have to worry about it
 
-Problem: npm global package installation fails with permission issues
-Solution: [Option 2 in these instructions](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
-Fixed: In a Vagrantfile, so you don't have to worry about it
-
-### create-react-app installation or start fails with error coming from random npm packages
-
-Problem: create-react-app fails to install because ENOENT error coming from a random package. If run multiple times, it might eventually install. However, it won't start, as another error is thrown from one of the packages
-Solution: npm 4.5.0 seems to be buggy. Installed yarn. create-react-app automatically uses yarn if it is installed.
-Fixed: In a Vagrantfile, so you don't have to worry about it
+create-react-app installation or start fails with error coming from random npm packages
+- Problem: create-react-app fails to install because ENOENT error coming from a random package. If run multiple times, it might eventually install. However, it won't start, as another error is thrown from one of the packages
+- Solution: npm 4.5.0 seems to be buggy. Installed yarn. create-react-app automatically uses yarn if it is installed.
+- Fixed: In a Vagrantfile, so you don't have to worry about it
