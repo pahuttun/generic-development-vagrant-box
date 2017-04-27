@@ -60,18 +60,49 @@ You can either do everything inside the vagrant box or if you want to share this
 2) `vagrant ssh`
 3) [Continue from Typescript instructions](https://www.typescriptlang.org/index.html)
 
-# Misc
+## React with create-react-app
+
+1) `vagrant up`
+2) `vagrant ssh`
+3) [Continue from create-react-app instructions](https://github.com/facebookincubator/create-react-app) and [React instructions](https://facebook.github.io/react/docs/hello-world.html)
+
+Notices:
+- Uses yarn instead of npm
+- Instead of localhost:3000 use the port you set in Vagrantfile
+- To enable live reloading, which means that the browser reloads when you modify source files, go to your react application folder (if you used create-react-app myapp, then go to folder myapp) and create `.env` file with content `CHOKIDAR_USEPOLLING=true`, save it and restart the react environment
+
+# Known issues
 
 ## Has been tested to work with at least following versions
 
+Host:
+- Mac OS X El Capitan
 - Vagrant 1.7.4
-- Mac OSX El Capitan
+- VirtualBox 5.0.10
 
-## Things you need to know
+Guest:
+- Nodejs 6.10.2
+- npm 4.5.0
+- yarn 0.23.2
 
-- You can access Vagrant box port :80 from your own machine using port :8080
-- npm has been prefixed to fix problem with npm global installation directory access problem. [Option 2 in these instructions](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
-
-## Known issues
+## Not fixed
 
 N/A
+
+## Not fixed, but there is a workaround
+
+N/A
+
+## Fixed in a way that you don't have to worry about it
+
+### npm global package folder permissions in vagrant
+
+Problem: npm global package installation fails with permission issues
+Solution: [Option 2 in these instructions](https://docs.npmjs.com/getting-started/fixing-npm-permissions)
+Fixed: In a Vagrantfile, so you don't have to worry about it
+
+### create-react-app installation or start fails with error coming from random npm packages
+
+Problem: create-react-app fails to install because ENOENT error coming from random package. If run multiple times, it might eventually install. However it won't start, as another error is thrown from one of the packages
+Solution: npm 4.5.0 seems to be buggy. Installed yarn
+Fixed: In a Vagrantfile, so you don't have to worry about it

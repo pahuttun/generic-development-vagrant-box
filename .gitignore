@@ -1,2 +1,5 @@
 # Vagrant box
 /.vagrant
+
+# Node modules
+node_modules/

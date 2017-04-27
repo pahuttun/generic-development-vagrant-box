@@ -22,22 +22,30 @@ HOST_PATH = '.'
 # Where to sync to on Guest
 GUEST_PATH = '/home/' + VM_USER + '/' + PROJECT_NAME
 
-# VM Port — comment this to use DHCP instead of NAT
-VM_PORT = 8080
+# VM Ports — comment these out to use DHCP instead of NAT
+# Usually non default ports are used to make sure there are no collisions between host and guest
+# Example: if you set VM_PORT_3000 = 3030, use localhost:3030 instead of localhost:3000
+VM_PORT_80 = 8080
+VM_PORT_3000 = 3030
 
 # Provision script for the Vagrant box
 # These commands are run as root
 $provision_script = <<SCRIPT
 
-  echo "Install git"
+  echo "Add required package repositories for Yarn"
+  curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+  echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
   apt-get update
+
+  echo "Install git"
   apt-get install -y git
 
-  echo "Install node 6.x"
+  echo "Install node 6.x, latest npm and yarn"
   curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
   apt-get install -y nodejs
   apt-get install -y build-essential
-  npm install -g npm
+  npm install -g npm@latest
+  apt-get install yarn
 
   echo "Update Ubuntu"
   apt-get update
@@ -89,8 +97,9 @@ Vagrant.configure(2) do |config|
     v.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
   end
 
-  # Port forwarding — comment this to use DHCP instead of NAT
-  config.vm.network "forwarded_port", guest: 80, host: VM_PORT
+  # Port forwarding — comment these out to use DHCP instead of NAT
+  config.vm.network "forwarded_port", guest: 80, host: VM_PORT_80
+  config.vm.network "forwarded_port", guest: 3000, host: VM_PORT_3000
 
   # DHCP — uncomment this if planning on using DHCP instead
   #config.vm.network "private_network", type: "dhcp"
