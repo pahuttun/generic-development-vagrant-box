@@ -28,7 +28,8 @@ Based on this article: https://medium.com/@JohnFoderaro/how-to-set-up-a-local-li
 2) Clone this repository
 3) Modify `Vagrantfile` and follow instructions written in it
 
-[More help with Vagrantfile](https://www.vagrantup.com/docs/vagrantfile/)
+How to understand Vagrantfile?
+- [More help with Vagrantfile](https://www.vagrantup.com/docs/vagrantfile/)
 
 ## How to start using your new development environment
 
@@ -40,7 +41,8 @@ cd ~/<name-of-your-project>
 
 Notice: vagrant up takes some time when you run it the first time. It also does lots of downloading, so make sure you are on wifi.
 
-[More help with vagrant basic commands](https://www.vagrantup.com/docs/cli/)
+How to start or stop development environment? How to destroy or recreate?
+- [More help with vagrant basic commands](https://www.vagrantup.com/docs/cli/)
 
 and you are ready to do your magic.
 
@@ -50,7 +52,8 @@ This is your work. You have now clean and empty development environment with the
 
 You can either do everything inside the vagrant box or if you want to share this environment with other developers, then it is wiser to set up things in provision part of the Vagrantfile.
 
-[More help with provision = "what is pre-installed to development environment when I run vagrant up the first time"](https://www.vagrantup.com/docs/cli/provision.html)
+What is pre-installed to development environment when I run vagrant up the first time?
+- [More help with provision](https://www.vagrantup.com/docs/cli/provision.html)
 
 ## Okay, what now?
 
@@ -60,8 +63,12 @@ Okay, now you have the new shiny virtual development environment made using Vagr
 
 2) Modify source code and use a browser from your own computer, not inside the virtual environment. Why? Because virtual environment doesn't have mega-awesome browsers and IDEs installed. The virtual environment is automatically setup to both share project folder between your computer (host) and the virtual environment (guest) and forward ports between host and guest so you can use a browser on your own computer.
 
-[More help with synced folders = "how to sync files between your computer and development environment"](https://www.vagrantup.com/docs/synced-folders/)
-[More help with port forwarding = "how to access development environment via browser"](https://www.vagrantup.com/docs/networking/forwarded_ports.html)
+How to sync files between your computer and development environment?
+- [More help with synced folders](https://www.vagrantup.com/docs/synced-folders/)
+
+How to access development environment via browser?
+- [More help with port forwarding](https://www.vagrantup.com/docs/networking/forwarded_ports.html)
+- [More help with dhcp](https://www.vagrantup.com/docs/networking/private_network.html)
 
 # Proven examples how to setup different environments
 
