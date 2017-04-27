@@ -8,11 +8,18 @@
 
 ## Purpose
 
-To have virtualized "basic ubuntu development box", which can be used as a starting point for learning new techs or building development environments.
+"Okay, today I will start learning/developing with typescript/react/angular/etc.", you said, googled for installation instructions and then installed bunch of stuff to your computer. Probably something fails, as it often does, so you install something more to fix that.
 
-The goal is really not to include everything you might ever need, as this is your work to do, but just to set the basics and help you quickstart developing.
+That is okay if you are planning to use this tech for good for ages. But when you just want to test something out or compare different techs, it might be indimitating to install everything to your own computer.
 
-It creates virtualized development environment, which uses ubuntu. It shares folder between host and guest, creates port forwarding, installs Git, node and npm and makes sure OS is up-to-date.
+The purpose of this project is to give you:
+- Instructions how to setup generic virtualized development environment, which is good starting point for almost any tech which runs on Ubuntu Linux
+- Pre-made Vagrantfile, which automatically sets your development environment...
+- And fixes the most common errors you will face when using virtual environments
+
+The goal is not to instruct "how to install tech x", but just tell whether it has been tested out to work with this env and then link to tech's own instructions.
+
+Also the goal is not to pre-install everything, but just the basics you need.
 
 Based on this article: https://medium.com/@JohnFoderaro/how-to-set-up-a-local-linux-environment-with-vagrant-163f0ba4da77
 
@@ -24,27 +31,27 @@ Based on this article: https://medium.com/@JohnFoderaro/how-to-set-up-a-local-li
 
 [More help with Vagrantfile](https://www.vagrantup.com/docs/vagrantfile/)
 
-## How to start
-
-`vagrant up`
-
-[More help with vagrant basic commands](https://www.vagrantup.com/docs/cli/)
-
-## How to use
+## What now?
 
 Okay, now you have new shiny Vagrant environment. How to use it?
 
-1) When you modify source code, it is wiser to use your own computer instead of modifying it inside vagrant box. That is because you probably have your favourite editors already set-up on your own computer and Vagrant environment doesn't have them. Also your own computer's I/O is faster. Fear not, Vagrant syncs the folder so your changes are instantly shown inside Vagrant.
+1) Use it as you would use any environment. Follow your tech choice's instructions for setup and usage. Do everything inside the virtual env, except...
 
-2) Everything else happens inside Vagrant box.
+2) Modify source code and use browser from your own computer, not inside virtual environment. Why? Because virtual environment doesn't have mega-awesome browsers and IDEs installed. The virtual environment is automatically setup to both share project folder between your computer (host) and the virtual environment (guest) and forward ports between host and guest so you can use browser on your own computer.
+
+## How to start using your new development environment
 
 ```
+vagrant up
 vagrant ssh
 cd ~/<name-of-your-project>
 ```
+
+[More help with vagrant basic commands](https://www.vagrantup.com/docs/cli/)
+
 and you are ready to do your magic.
 
-## But wait, this box doesn't have Typescript/React/Angular/etc installed? What to do
+## But wait, this environment doesn't have Typescript/React/Angular/etc installed? What to do
 
 This is your work. You have now clean and empty development env with the bare basic setup. To make it work with your unique needs, just follow the your-technology-here instructions.
 
@@ -52,7 +59,7 @@ You can either do everything inside the vagrant box or if you want to share this
 
 [More help with provision](https://www.vagrantup.com/docs/cli/provision.html)
 
-# Examples how to setup different environments
+# Proven examples how to setup different environments
 
 ## Typescript
 
@@ -70,6 +77,10 @@ Notices:
 - Uses yarn instead of npm
 - Instead of localhost:3000 use the port you set in Vagrantfile
 - To enable live reloading, which means that the browser reloads when you modify source files, go to your react application folder (if you used create-react-app myapp, then go to folder myapp) and create `.env` file with content `CHOKIDAR_USEPOLLING=true`, save it and restart the react environment
+
+## Other technologies
+
+Please try it out and let me know if you found any problems that needs fixing
 
 # Known issues
 
